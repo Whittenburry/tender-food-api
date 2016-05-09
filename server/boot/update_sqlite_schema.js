@@ -1,7 +1,16 @@
 module.exports = function(app) {
-  app.dataSources.db.isActual(function(err, actual) {
-    if (!actual) {
-      app.dataSources.db.autoupdate();
-    }
-  });
+  const ds = app.dataSources.db;
+  debugger;
+
+  if(ds.connected) {
+    ds.autoupdate();
+  } else {
+    ds.once('connected', function() {
+      ds.isActual(function(err, actual) {
+        if (!actual) {
+          ds.autoupdate();
+        }
+      });
+    });
+  }
 };
