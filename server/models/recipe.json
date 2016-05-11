@@ -18,12 +18,12 @@
   },
   "validations": [],
   "relations": {
-    "ingredient": {
+    "ingredients": {
       "type": "hasMany",
       "model": "ingredient",
       "foreignKey": ""
     },
-    "instruction": {
+    "instructions": {
       "type": "hasMany",
       "model": "instruction",
       "foreignKey": ""
